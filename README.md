@@ -1,19 +1,24 @@
-# thinkster-django-angular-boilerplate
+# django + angularjs tastytesty
+
 
 ## Installation
 
-*NOTE: Requires [virtualenv](http://virtualenv.readthedocs.org/en/latest/),
+*[virtualenv](http://virtualenv.readthedocs.org/en/latest/),
 [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) and
 [Node.js](http://nodejs.org/).*
 
-* Fork this repository.
-* `$ git clone git@github.com:<your username>/thinkster-django-angular-boilerplate.git`
+
 * `$ mkvirtualenv thinkster-djangular`
+* ?(OR `$ mkvirtualenv thinkster-djangular —-no-site-packages` )
 * `$ cd thinkster-django-angular-boilerplate/`
-* `$ pip install -r requirements.txt`
+* `$ pip2.7 install -r requirements.txt`
+* ?(`$ pip freeze > requirements.txt`)
 * `$ npm install -g bower`
 * `$ npm install`
 * `$ bower install`
-* `$ python manage.py migrate`
-* `$ python manage.py runserver`
+* `$ python2.7 manage.py migrate`
+* `$ python2.7 manage.py runserver`
 
+
+## Boilerplate
+Project built on boilerplate django + angularjs code available at James Brewer's [github page](https://github.com/brwr/thinkster-django-angular-boilerplate) 
