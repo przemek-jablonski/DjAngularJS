@@ -14,4 +14,5 @@
             templateUrl: '/static/templates/authentication/register.html'
         }).otherwise('/err');
     }
+    //asdadasd
 })();
