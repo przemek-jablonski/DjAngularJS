@@ -58,4 +58,3 @@ class UserAccount(AbstractBaseUser):
 
     def __unicode__(self):
         return self.email
-

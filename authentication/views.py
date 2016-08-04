@@ -31,7 +31,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     # 'username' (not ID) to be able to identify accounts by username instead
     lookup_field = 'username'
     serializer_class = UserAccountSerializer
-    queryset = UserAccount.object.all()
+    queryset = UserAccount.objects.all()
 
     def get_permissions(self):
         # allow any user access to safe methods in API endpoints
@@ -56,4 +56,3 @@ class AccountViewSet(viewsets.ModelViewSet):
             {'status': '400 Bad API Request',
             'message': 'Invalid data for account creation'},
             status = status.HTTP_400_BAD_REQUEST)
-
