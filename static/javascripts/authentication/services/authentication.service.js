@@ -1,31 +1,48 @@
-(function() {
-    'use strict';
+/**
+* Authentication
+* @namespace thinkster.authentication.services
+*/
+(function () {
+  'use strict';
 
-    angular
-        .module('thinkster.authentication.services')
-        .factory('Authentication', Authentication);
+  angular
+    .module('thinkster.authentication.services')
+    .factory('Authentication', Authentication);
 
-    // injecting Angular services (cookies, http) to service as a dependency
-    Authentication.$inject = ['$cookies', '$http'];
+  Authentication.$inject = ['$cookies', '$http'];
 
-    // defining (and returning) factory that was just created ('Authentication')
+  /**
+  * @namespace Authentication
+  * @returns {Factory}
+  */
+  function Authentication($cookies, $http) {
     /**
-    * @namespace Authentication
-    * @returns {Factory}
+    * @name Authentication
+    * @desc The Factory to be returned
     */
-    function Authentication($cookies, $http) {
-        var Authentication = { // factory to be returned
-            register: register
-        };
-        return Authentication;
+    var Authentication = {
+      register: register
+    };
 
-        // registering a new user with data provided
-        function register(email, username, password) {
-            return $http.post('/api/v1/accounts', {
-                email: email,
-                username: username,
-                password: password
-            });
-        }
+    return Authentication;
+
+    ////////////////////
+
+    /**
+    * @name register
+    * @desc Try to register a new user
+    * @param {string} username The username entered by the user
+    * @param {string} password The password entered by the user
+    * @param {string} email The email entered by the user
+    * @returns {Promise}
+    * @memberOf thinkster.authentication.services.Authentication
+    */
+    function register(email, password, username) {
+      return $http.post('/api/v1/accounts/', {
+        username: username,
+        password: password,
+        email: email
+      });
     }
+  }
 })();
