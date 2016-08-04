@@ -11,14 +11,13 @@ class UserAccountManager(BaseUserManager):
             raise ValueError('invalid (or blank) username.')
 
         account = self.model(
-            email = self.normalize_email(email),
-            username = kwargs.get('username')
+            email = self.normalize_email(email), username = kwargs.get('username')
         )
 
         account.set_password(password)
         account.save()
 
-        return account;
+        return account
 
     # creating writer
     # def create_writer(self,
@@ -28,7 +27,7 @@ class UserAccountManager(BaseUserManager):
         account = self.create_user(email, password, **kwargs)
         account.is_admin=True
         account.save()
-        return account;
+        return account
 
 
 
@@ -58,3 +57,9 @@ class UserAccount(AbstractBaseUser):
 
     def __unicode__(self):
         return self.email
+
+    def get_full_name(self):
+        return ' '.join([self.first_name, self.last_name])
+
+    def get_short_name(self):
+        return self.first_name

@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from rest_framework import viewsets, permissions
 from rest_framework import status
 
-from django.http import HttpResponse
-import datetime
+# from django.http import HttpResponse
+# import datetime
 
 
 # views in django:
@@ -18,10 +18,10 @@ import datetime
 #   response: HTML contents, redirect, 404, JSON/XML file etc.
 #   view funcions include any additional logic needed to return a response
 # example:
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html_body = "<html><body>Current time: %s.</body></html>" % now
-    return HttpResponse(html_body)
+# def current_datetime(request):
+#     now = datetime.datetime.now()
+#     html_body = "<html><body>Current time: %s.</body></html>" % now
+#     return HttpResponse(html_body)
 
 
 # creating viewset (set of views)
@@ -44,15 +44,37 @@ class AccountViewSet(viewsets.ModelViewSet):
 
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
+    # def get_permissions(self):
+    #     print("asdasdadd")
+    #     return (permissions.AllowAny(),)
+
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
             UserAccount.objects.create_user(**serializer.validated_data)
-            return Response(serializer.validated_data,status = status.HTTP_201_CREATED)
+            return Response(serializer.validated_data, status = status.HTTP_201_CREATED)
+        # else:
+        #     serializer.
 
-        return Response(
-            {'status': '400 Bad API Request',
-            'message': 'Invalid data for account creation'},
-            status = status.HTTP_400_BAD_REQUEST)
+        # serializer.errors
+
+
+        # return Response({
+        #     'status': '400 Bad API Request',
+        #     'message': 'Invalid data for account creation'},
+        #     status = status.HTTP_400_BAD_REQUEST)
+
+        return Response({
+            'status': '400 Bad API Request',
+            'message': 'New user data not completed or '},
+            status=status.HTTP_400_BAD_REQUEST)
+
+
+    # def create(self, request):
+    #     serializer = self.serializer_class(data=request.data)
+    #     UserAccount.objects.create_user(**serializer.validated_data)
+    #     return Response(serializer.validated_data, status = status.HTTP_201_CREATED)
+
+
