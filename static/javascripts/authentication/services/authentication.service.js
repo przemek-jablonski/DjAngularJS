@@ -32,27 +32,52 @@
 
 
         function register(email, password, username) {
-            return $http.post('/api/v1/accounts/', {
-                username: username,
-                password: password,
-                email: email
-            });
+          return $http.post('/api/v1/accounts/', {
+            username: username,
+            password: password,
+            email: email
+          }).then(registerSuccessFn, registerErrorFn);
+
+          /**
+          * @name registerSuccessFn
+          * @desc Log the new user in
+          */
+          function registerSuccessFn(data, status, headers, config) {
+            Authentication.login(email, password);
+          }
+
+          /**
+          * @name registerErrorFn
+          * @desc Log "Epic failure!" to the console
+          */
+          function registerErrorFn(data, status, headers, config) {
+            console.error('Epic failure!');
+          }
         }
 
+
         function login(email, password) {
-            return $http.post('/api/v1/auth/login', {
-                email: email,
-                password: password
-            }).then(loginSuccess, loginFailure);
+          return $http.post('/api/v1/auth/login/', {
+            email: email, password: password
+          }).then(loginSuccessFn, loginErrorFn);
 
-            function loginSuccess(data, status, headers, config) {
-                Authentication.setAuthenticatedAccount(data.data);
-                window.location = '/';
-            }
+          /**
+           * @name loginSuccessFn
+           * @desc Set the authenticated account and redirect to index
+           */
+          function loginSuccessFn(data, status, headers, config) {
+            Authentication.setAuthenticatedAccount(data.data);
+              console.error('login success!');
+            window.location = '/';
+          }
 
-            function loginFailure(data, status, headers, config) {
-                console.error("login failure");
-            }
+          /**
+           * @name loginErrorFn
+           * @desc Log "Epic failure!" to the console
+           */
+          function loginErrorFn(data, status, headers, config) {
+            console.error('Epic failure!');
+          }
         }
 
         function getAuthenticatedAccount() {

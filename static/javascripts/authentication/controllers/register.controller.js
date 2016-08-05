@@ -32,26 +32,26 @@
     * @desc Register a new user
     * @memberOf thinkster.authentication.controllers.RegisterController
     */
-    // function register() {
-    //   Authentication.register(vm.email, vm.password, vm.username);
-    // }
-
-    function register(email, password, username) {
-      return $http.post('/api/v1/accounts', {
-        username: username,
-        password: password,
-        email: email
-      }).then(registerSuccess, registerFailure);
-
-      function registerSuccess(data, status, headers, config) {
-        Authentication.login(email, password);
-      }
-
-      function registerFailure(data, status, headers, config) {
-        console.error("register failure");
-      }
-
+    function register() {
+      Authentication.register(vm.email, vm.password, vm.username);
     }
+
+    // function register(email, password, username) {
+    //   return $http.post('/api/v1/accounts', {
+    //     username: username,
+    //     password: password,
+    //     email: email
+    //   }).then(registerSuccess, registerFailure);
+    //
+    //   function registerSuccess(data, status, headers, config) {
+    //     Authentication.login(email, password);
+    //   }
+    //
+    //   function registerFailure(data, status, headers, config) {
+    //     console.error("register failure");
+    //   }
+    //
+    // }
 
   }
 })();

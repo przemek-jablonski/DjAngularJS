@@ -64,7 +64,7 @@ class AccountViewSet(viewsets.ModelViewSet):
 # not very similar to creating()-updating() objects.
 class LoginView(views.APIView):
     # 'post' as in html's POST keyword, handling POST requests here
-    def post(selfself, request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
 
         email = data.get('email', None)

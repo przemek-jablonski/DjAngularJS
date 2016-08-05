@@ -8,7 +8,7 @@
     LoginController.$inject = ['$location', '$scope', 'Authentication'];
 
     function LoginController($location, $scope, Authentication) {
-        // vm = viewmodel?
+        // vm -> viewmodel
         var vm = this;
 
         vm.login = login;
