@@ -17,5 +17,6 @@ dist/
 staticfiles/
 
 ./idea
-.idea/
+.idea/*
+.idea*
 
