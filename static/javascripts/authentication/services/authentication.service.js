@@ -21,12 +21,12 @@
     * @desc The Factory to be returned
     */
         var Authentication = {
-            login: login,
-            register: register,
             getAuthenticatedAccount: getAuthenticatedAccount,
-            isAuthenticated: isAuthenticated,
-            setAuthenticatedAccount: setAuthenticatedAccount,
-            unauthenticate: unauthenticate
+              isAuthenticated: isAuthenticated,
+              login: login,
+              register: register,
+              setAuthenticatedAccount: setAuthenticatedAccount,
+              unauthenticate: unauthenticate
         };
             return Authentication;
 
@@ -67,7 +67,7 @@
            */
           function loginSuccessFn(data, status, headers, config) {
             Authentication.setAuthenticatedAccount(data.data);
-              console.error('login success!');
+
             window.location = '/';
           }
 
@@ -81,24 +81,24 @@
         }
 
         function getAuthenticatedAccount() {
-            if (!$cookies.authenticatedAccount) {
-                return;
-            }
+          if (!$cookies.authenticatedAccount) {
+            return;
+          }
 
-            return JSON.parse($cookies.authenticatedAccount);
-        }
+          return JSON.parse($cookies.authenticatedAccount);
+}
 
         function isAuthenticated() {
-            return !!$cookies.authenticatedAccount;
+          return !!$cookies.authenticatedAccount;
         }
 
         function setAuthenticatedAccount(account) {
-            $cookies.authenticatedAccount = JSON.stringify(account);
+         $cookies.authenticatedAccount = JSON.stringify(account);
         }
 
-        function unauthenticate() {
-            delete $cookies.authenticatedAccount;
-        }
+      function unauthenticate() {
+         delete $cookies.authenticatedAccount;
+      }
 
     }
 })();

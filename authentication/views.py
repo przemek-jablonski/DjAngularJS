@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.core.serializers import json
+import json
 from django.shortcuts import render
 
 from authentication.permissions import IsAccountOwner
@@ -63,31 +63,30 @@ class AccountViewSet(viewsets.ModelViewSet):
 # class will be more low-level, since 'logging in' is an operation which is
 # not very similar to creating()-updating() objects.
 class LoginView(views.APIView):
-    # 'post' as in html's POST keyword, handling POST requests here
     def post(self, request, format=None):
         data = json.loads(request.body)
 
         email = data.get('email', None)
         password = data.get('password', None)
 
-        user_account = authenticate(email=email, password=password)
+        account = authenticate(email=email, password=password)
 
-        if user_account is not None:
+        if account is not None:
+            if account.is_active:
+                login(request, account)
 
-            if user_account.is_active:
-                login(request, user_account)
-                serialized = UserAccountSerializer(user_account)
+                serialized = UserAccountSerializer(account)
+
                 return Response(serialized.data)
             else:
                 return Response({
-                    'status': 'Unauthorized.',
-                    'message': 'Account inactive / logged out / deleted.'
+                    'status': 'Unauthorized',
+                    'message': 'This account has been disabled.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
-
         else:
             return Response({
                 'status': 'Unauthorized',
-                'message': 'Authentication failed (email/password wrong).'
+                'message': 'Username/password combination invalid.'
             }, status=status.HTTP_401_UNAUTHORIZED)
 
 
