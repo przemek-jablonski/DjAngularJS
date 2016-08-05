@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login
+from django.core.serializers import json
 from django.shortcuts import render
 
 from authentication.permissions import IsAccountOwner
@@ -6,7 +8,7 @@ from authentication.models import UserAccount
 
 from rest_framework.response import Response
 from rest_framework import viewsets, permissions
-from rest_framework import status
+from rest_framework import status, views
 
 # from django.http import HttpResponse
 # import datetime
@@ -44,37 +46,50 @@ class AccountViewSet(viewsets.ModelViewSet):
 
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
-    # def get_permissions(self):
-    #     print("asdasdadd")
-    #     return (permissions.AllowAny(),)
-
-
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
             UserAccount.objects.create_user(**serializer.validated_data)
             return Response(serializer.validated_data, status = status.HTTP_201_CREATED)
-        # else:
-        #     serializer.
-
-        # serializer.errors
-
-
-        # return Response({
-        #     'status': '400 Bad API Request',
-        #     'message': 'Invalid data for account creation'},
-        #     status = status.HTTP_400_BAD_REQUEST)
 
         return Response({
             'status': '400 Bad API Request',
-            'message': 'New user data not completed or '},
+            'message': 'User data not completed or already exist in database.'},
             status=status.HTTP_400_BAD_REQUEST)
 
 
-    # def create(self, request):
-    #     serializer = self.serializer_class(data=request.data)
-    #     UserAccount.objects.create_user(**serializer.validated_data)
-    #     return Response(serializer.validated_data, status = status.HTTP_201_CREATED)
+# extending views.APIView (more generic class than ModelViewSet)
+# class will be more low-level, since 'logging in' is an operation which is
+# not very similar to creating()-updating() objects.
+class LoginView(views.APIView):
+    # 'post' as in html's POST keyword, handling POST requests here
+    def post(selfself, request, format=None):
+        data = json.loads(request.body)
+
+        email = data.get('email', None)
+        password = data.get('password', None)
+
+        user_account = authenticate(email=email, password=password)
+
+        if user_account is not None:
+
+            if user_account.is_active:
+                login(request, user_account)
+                serialized = UserAccountSerializer(user_account)
+                return Response(serialized.data)
+            else:
+                return Response({
+                    'status': 'Unauthorized.',
+                    'message': 'Account inactive / logged out / deleted.'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+        else:
+            return Response({
+                'status': 'Unauthorized',
+                'message': 'Authentication failed (email/password wrong).'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+
 
 
