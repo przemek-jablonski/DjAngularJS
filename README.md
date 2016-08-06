@@ -1,4 +1,4 @@
-# django + angularjs tastytesty
+# django + angularjs fiddling
 
 
 ## Installation
