@@ -38,7 +38,8 @@
           }).then(registerSuccessFn, registerErrorFn);
 
           function registerSuccessFn(data, status, headers, config) {
-            Authentication.login(email, password);
+            // Authentication.login(email, password);
+              window.location = '/login';
           }
 
           function registerErrorFn(data, status, headers, config) {
