@@ -24,6 +24,7 @@
             getAuthenticatedAccount: getAuthenticatedAccount,
               isAuthenticated: isAuthenticated,
               login: login,
+              logout: logout,
               register: register,
               setAuthenticatedAccount: setAuthenticatedAccount,
               unauthenticate: unauthenticate
@@ -33,23 +34,13 @@
 
         function register(email, password, username) {
           return $http.post('/api/v1/accounts/', {
-            username: username,
-            password: password,
-            email: email
+            username: username, password: password, email: email
           }).then(registerSuccessFn, registerErrorFn);
 
-          /**
-          * @name registerSuccessFn
-          * @desc Log the new user in
-          */
           function registerSuccessFn(data, status, headers, config) {
             Authentication.login(email, password);
           }
 
-          /**
-          * @name registerErrorFn
-          * @desc Log "Epic failure!" to the console
-          */
           function registerErrorFn(data, status, headers, config) {
             console.error('Epic failure!');
           }
@@ -61,32 +52,38 @@
             email: email, password: password
           }).then(loginSuccessFn, loginErrorFn);
 
-          /**
-           * @name loginSuccessFn
-           * @desc Set the authenticated account and redirect to index
-           */
           function loginSuccessFn(data, status, headers, config) {
             Authentication.setAuthenticatedAccount(data.data);
-
             window.location = '/';
           }
 
-          /**
-           * @name loginErrorFn
-           * @desc Log "Epic failure!" to the console
-           */
           function loginErrorFn(data, status, headers, config) {
             console.error('Epic failure!');
           }
         }
 
+
+        function logout() {
+            return $http.post('/api/v1/auth/logout/')
+                .then(logoutSuccess, logoutFailure)
+
+            function logoutSuccess(data, status, headers, config) {
+                Authentication.unauthenticate();
+                window.location = "/";
+            }
+
+            function logoutFailure(data, status, headers, config) {
+                console.error("logout failure");
+            }
+        }
+
+
         function getAuthenticatedAccount() {
           if (!$cookies.authenticatedAccount) {
             return;
           }
-
           return JSON.parse($cookies.authenticatedAccount);
-}
+        }
 
         function isAuthenticated() {
           return !!$cookies.authenticatedAccount;
@@ -96,9 +93,9 @@
          $cookies.authenticatedAccount = JSON.stringify(account);
         }
 
-      function unauthenticate() {
+        function unauthenticate() {
          delete $cookies.authenticatedAccount;
-      }
+        }
 
     }
 })();
