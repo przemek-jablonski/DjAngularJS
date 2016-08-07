@@ -3,25 +3,50 @@
 }
 
 .entry {
-  font-weight: lighter;
+
+}
+
+.entry .entry__content{
   text-align: center;
+  font-weight: normal;
   font-style: italic;
-  padding-top: 15px;
-}B
+  padding-bottom: 15px;
+}
+
+.entry .entry__bottomline{
+  text-align: left;
+  font-weight: lighter;
+  font-style: italic;
+  padding-left: 60px;
+}
 
 .entry .entry__meta{
-  font-weight: bold;
   text-align: right;
+  font-weight: bold;
   padding-bottom: 15px;
   padding-right: 60px;
 }
 
-.post .entry__meta a:hover {
+.entry .entry__meta a:hover {
   text-decoration: none;
 }
 
 .btn-add-new-entry {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 50px;
+}
+
+body{
+	 background-color: #000000;
+   padding: 0px;
+   margin: 0px;
+ }
+
+#gradient
+{
+  width: 100%;
+  height: 800px;
+  padding: 0px;
+  margin: 0px;
 }

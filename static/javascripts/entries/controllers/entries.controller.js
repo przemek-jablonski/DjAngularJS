@@ -35,17 +35,18 @@
     */
     function calculateNumberOfColumns() {
       var width = $(window).width();
-
-      if (width >= 1200) {
-        return 4;
-      } else if (width >= 992) {
-        return 3;
-      } else if (width >= 768) {
-        return 2;
-      } else {
-        return 1;
-      }
-      // return 1;
+      //
+      // if (width >= 1200) {
+      //     return 2;
+      // }
+      // } else if (width >= 992) {
+      //   return 3;
+      // } else if (width >= 768) {
+      //   return 2;
+      // } else {
+      //   return 1;
+      // }
+      return 1;
     }
 
 
