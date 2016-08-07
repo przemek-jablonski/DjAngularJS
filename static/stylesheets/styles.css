@@ -13,3 +13,9 @@
 .post .entry__meta a:hover {
   text-decoration: none;
 }
+
+.btn-add-new-entry {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

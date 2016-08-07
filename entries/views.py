@@ -21,9 +21,9 @@ class EntryViewSet(viewsets.ModelViewSet):
 
 
 
-def perform_create(self, serializer):
-    instance = serializer.save(author = self.request.user)
-    return super(EntryViewSet, self).perform_create(serializer)
+    def perform_create(self, serializer):
+        instance = serializer.save(author = self.request.user)
+        return super(EntryViewSet, self).perform_create(serializer)
 
 
 class UserAccountEntriesViewSet(viewsets.ViewSet):

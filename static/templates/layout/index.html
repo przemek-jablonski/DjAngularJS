@@ -1,1 +1,7 @@
 <entries entries="vm.entries" ng-show="vm.entries && vm.entries.length"></entries>
+
+<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-entry"
+  href="javascript:void(0)"
+  ng-show="vm.isAuthenticated"
+  ng-dialog="/static/templates/entries/new-entry.html"
+  ng-dialog-controller="NewEntryController as vm"></a>
