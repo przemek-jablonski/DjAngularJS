@@ -2,12 +2,18 @@
   text-align: center;
 }
 
-.entry {}
+.entry {
+  font-weight: lighter;
+  text-align: center;
+  font-style: italic;
+  padding-top: 15px;
+}
 
 .entry .entry__meta{
   font-weight: bold;
   text-align: right;
-  padding-bottom: 19px;
+  padding-bottom: 15px;
+  padding-right: 60px;
 }
 
 .post .entry__meta a:hover {
