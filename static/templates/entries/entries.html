@@ -1,0 +1,17 @@
+{# ng-cloak directive to prevent webpage flashing #}
+<div class="row" ng-cloak>
+  <div ng-repeat="column in vm.columns">
+      <em>columns</em>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div ng-repeat="entry in column">
+        <entry entry="entry"></entry>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="vm.columns && vm.columns.length">
+    <div class="col-sm-12 no-entries-here">
+      <em>The are no posts here.</em>
+    </div>
+  </div>
+</div>

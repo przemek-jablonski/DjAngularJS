@@ -6,8 +6,8 @@ from entries.views import UserAccountEntriesViewSet, EntryViewSet
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
-router.register(r'entries', EntryViewSet)
 
+router.register(r'entries', EntryViewSet)
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )

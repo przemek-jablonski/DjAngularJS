@@ -1,32 +1,35 @@
 (function () {
-  'use strict';
-
-  angular
-    .module('thinkster', [
-      'thinkster.config',
-      'thinkster.routes',
-      'thinkster.authentication',
-        'thinkster.layout'
-    ]);
-
-  angular
-    .module('thinkster.config', []);
-
-  angular
-    .module('thinkster.routes', ['ngRoute']);
+    'use strict';
 
     angular
-  .module('thinkster')
-  .run(run);
+        .module('thinkster', [
+            'thinkster.config',
+            'thinkster.routes',
+            'thinkster.authentication',
+            'thinkster.layout',
+            'thinkster.entries',
+            'thinkster.utils'
+        ]);
 
-run.$inject = ['$http'];
+    angular
+        .module('thinkster.config', []);
 
-/**
-* @name run
-* @desc Update xsrf $http headers to align with Django's defaults
-*/
-function run($http) {
-  $http.defaults.xsrfHeaderName = 'X-CSRFToken';
-  $http.defaults.xsrfCookieName = 'csrftoken';
-}
+    angular
+        .module('thinkster.routes', ['ngRoute']);
+
+    angular
+        .module('thinkster')
+        .run(run);
+
+    run.$inject = ['$http'];
+
+    /**
+    * @name run
+    * @desc Update xsrf $http headers to align with Django's defaults
+    */
+    function run($http) {
+        $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+        $http.defaults.xsrfCookieName = 'csrftoken';
+    }
+
 })();

@@ -1,4 +1,5 @@
 from rest_framework import permissions
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 
@@ -32,4 +33,9 @@ class UserAccountEntriesViewSet(viewsets.ViewSet):
     def list(self, request, account_username=None):
         queryset = self.queryset.filter(author__username=account_username)
         serializer = self.serializer_class(queryset, many=True)
+        if serializer.data.__len__() == 0:
+            return Response({
+                'status': 'no content',
+                'message': 'no content.'
+            }, status=status.HTTP_204_NO_CONTENT);
         return Response(serializer.data)

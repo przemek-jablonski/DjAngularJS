@@ -1,0 +1,15 @@
+.no-entries-here{
+  text-align: center;
+}
+
+.entry {}
+
+.entry .entry__meta{
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 19px;
+}
+
+.post .entry__meta a:hover {
+  text-decoration: none;
+}
