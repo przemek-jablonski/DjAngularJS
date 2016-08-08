@@ -2,18 +2,27 @@
   <div class="col-sm-11">
     <div class="well">
       <div class="entry">
-        <div class="entry__meta">
-          <a href="/+{{ entry.author.username }}">
-            +{{ entry.author.username }}
-          </a>
+
+
+        <div class="entry__meta"> <a href="/+{{ entry.author.username }}">{{ entry.author.username }}</a> </div>
+
+
+
+        <div class="entry__content">{{ entry.content }}</div>
+
+
+
+<div class="entry__bottomline">{{ entry.created_at }}</div>
+
+          <div class="float__right">
+
+            <button type="submit" class="btn btn-material-lightgreen">read this</button>
         </div>
 
-        <div class="entry__content">
-          {{ entry.content }}
-        </div>
-          <div class="entry__bottomline">
-               {{ entry.created_at }}
-          </div>
+          <br/>
+
+
+
       </div>
     </div>
   </div>

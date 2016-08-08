@@ -1,40 +1,54 @@
-<div class="col-md-4 col-md-offset-4">
-  <div class="well" ng-show="vm.profile">
-    <form role="form" class="settings" ng-submit="vm.update()">
-      <div class="form-group">
-        <label for="settings__email">Email</label>
-        <input type="text" class="form-control" id="settings__email" ng-model="vm.profile.email" placeholder="ex. john@example.com" />
-      </div>
+<div class="col-sm-11">
+    <div class="well" ng-show="vm.profile">
+        <form role="form" class="settings" ng-submit="vm.update()">
+            <div class="form-group">
+                <label for="settings__first_name">First Name</label>
+                <textarea class="form-control" id="settings__first_name" ng-model="vm.profile.first_name" placeholder="herp" />
+            </div>
+            <div class="form-group">
+                <label for="settings__last_name">Last Name</label>
+                <textarea class="form-control" id="settings__last_name" ng-model="vm.profile.last_name" placeholder="derp" />
+            </div>
+            <div class="form-group">
+                <label for="settings__bio_short">Bio (short)</label>
+                <textarea class="form-control" id="settings__bio_short" ng-model="vm.profile.bio_short" placeholder="company, writer, publisher name etc" />
+            </div>
+            <div class="form-group">
+                <label for="settings__bio_long">Bio (long)</label>
+                <textarea class="form-control" id="settings__bio_long" ng-model="vm.profile.bio_long" placeholder="few words about you and your entries on medium.com" />
+            </div>
+            <div class="form-group">
+                <label for="settings__company">Company</label>
+                <textarea class="form-control" id="settings__company" ng-model="vm.profile.company" placeholder="super firma tutej" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">update details</button>
+                <!--<button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">delete</button>-->
+            </div>
+        </form>
+    </div>
 
-      <div class="form-group">
-        <label for="settings__password">New Password</label>
-        <input type="password" class="form-control" id="settings__password" ng-model="vm.profile.password" placeholder="ex. notgoogleplus" />
-      </div>
+    <div class="well" ng-show="vm.profile">
+        <form role="form" class="settings" ng-submit="vm.update()">
 
-      <div class="form-group">
-        <label for="settings__confirm-password">Confirm Password</label>
-        <input type="password" class="form-control" id="settings__confirm-password" ng-model="vm.profile.confirm_password" placeholder="ex. notgoogleplus" />
-      </div>
+            <div class="form-group">
+                <label for="settings__email">Email</label>
+                <input type="text" class="form-control" id="settings__email" ng-model="vm.profile.email" placeholder="ex. john@example.com" />
+            </div>
+            <div class="form-group">
+                <label for="settings__password">New Password</label>
+                <input type="password" class="form-control" id="settings__password" ng-model="vm.profile.password" placeholder="new password here" />
+            </div>
+            <div class="form-group">
+                <label for="settings__confirm-password">Confirm Password</label>
+                <input type="password" class="form-control" id="settings__confirm-password" ng-model="vm.profile.confirm_password" placeholder="repeat new password" />
+            </div>
 
-      <div class="form-group">
-        <label for="settings__username">Username</label>
-        <input type="text" class="form-control" id="settings__username" ng-model="vm.profile.username" placeholder="ex. notgoogleplus" />
-      </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">update</button>
+                <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">delete</button>
+            </div>
+        </form>
+    </div>
 
-      <div class="form-group">
-        <label for="settings__bio_short">Bio (short)</label>
-        <textarea class="form-control" id="settings__bio_short" ng-model="vm.profile.bio_short" placeholder="short bio" />
-      </div>
-
-      <div class="form-group">
-        <label for="settings__bio_long">Bio (long)</label>
-        <textarea class="form-control" id="settings__bio_long" ng-model="vm.profile.bio_long" placeholder="ex. short long(er)" />
-      </div>
-
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">update</button>
-        <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">delete</button>
-      </div>
-    </form>
-  </div>
 </div>

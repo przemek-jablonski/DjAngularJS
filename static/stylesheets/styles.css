@@ -40,3 +40,44 @@
 .background__image {
   background-color: #40403e
 }
+
+.profile__data {
+  align-items:center;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.profile__data__heading {
+  color: #010600;
+  font-weight: 400;
+  font-size: 300%;
+}
+
+.profile__data__heading_s {
+  color: #0b1a08;
+  font-weight: 200;
+  font-size: 170%;
+  font-style: italic;
+}
+
+.profile__data__heading_xs {
+  color: #212621;
+  font-weight: 100;
+  font-size: 110%;
+  font-style: italic;
+}
+
+
+.profile__data__title {
+  color: #32392d;
+  font-style: italic;
+  font-size: 75%;
+}
+
+.float__right {
+  float: right;
+  padding-bottom: 10px;
+}

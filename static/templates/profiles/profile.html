@@ -1,8 +1,50 @@
-<div class="profile" ng-show="vm.profile">
-  <div class="jumbotron profile__header">
-    <h1 class="profile__username">+{{ vm.profile.username }}</h1>
-    <p class="profile__bio_short">{{ vm.profile.bio_short }}</p>
-  </div>
+<div class="col-sm-11">
+    <div class="profile" ng-show="vm.profile">
+        <div class="jumbotron profile__header">
+            <div class="profile__data">
 
-  <entries entries="vm.entries"></entries>
+            <hr/>
+            <h2 class="profile__data__heading">{{ vm.profile.username }}</h2>
+            <div class="profile__data__title">username</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_s">{{ vm.profile.email }}</h2>
+            <div class="profile__data__title">email</div>
+
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.first_name }} </h2>
+            <div class="profile__data__title">first name</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.last_name}}</h2>
+            <div class="profile__data__title">last name</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.bio_short }}</h2>
+            <div class="profile__data__title">short bio</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.bio_long }}</h2>
+            <div class="profile__data__title">long bio</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.company }}</h2>
+            <div class="profile__data__title">company</div>
+
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.created_at }}</h2>
+            <div class="profile__data__title">register date</div>
+
+            <hr/>
+            <h2 class="profile__data__heading_xs">{{ vm.profile.updated_at }}</h2>
+            <div class="profile__data__title">last update</div>
+
+            <hr/>
+            </div>
+        </div>
+
+    <!-- <entries entries="vm.entries"></entries>#} -->
+    </div>
 </div>
