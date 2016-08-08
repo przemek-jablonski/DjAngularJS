@@ -9,7 +9,16 @@ class EntrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Entry
-        fields = ('id', 'author', 'content', 'created_at', 'updated_at')
+        fields = (
+            'id',
+            'author',
+            'title',
+            'content',
+            'likes',
+            'saves',
+            'visits',
+            'created_at',
+            'updated_at')
         read_only_fields = ('id', 'created_at', 'updated_at')
 
     def get_validation_exclusions(self, *args, **kwargs):

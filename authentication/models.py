@@ -35,16 +35,16 @@ class UserAccount(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=20, unique=True)
 
-    first_name = models.CharField(max_length=20, blank=True, default="herp")
-    last_name = models.CharField(max_length=20, blank=True, default="derp")
+    first_name = models.CharField(max_length=20, blank=True, default="firstnameherp")
+    last_name = models.CharField(max_length=20, blank=True, default="lastnamederp")
     # birth_date = models.DateField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    bio_short = models.CharField(max_length=140, blank=True, default="short bio")
-    bio_long = models.CharField(max_length=500, blank=True, default="long bio")
-    company = models.CharField(max_length=50, default="none")
+    bio_short = models.CharField(max_length=140, blank=True, default="default short bio")
+    bio_long = models.CharField(max_length=500, blank=True, default="default long bio")
+    company = models.CharField(max_length=50, default="default company")
 
     is_reader = models.BooleanField(default=True)
     is_writer = models.BooleanField(default=False)

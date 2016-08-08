@@ -11,7 +11,7 @@ router.register(r'entries', EntryViewSet)
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
-accounts_router.register(r'posts', UserAccountEntriesViewSet)
+accounts_router.register(r'entries', UserAccountEntriesViewSet)
 
 urlpatterns = patterns(
     '',

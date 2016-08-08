@@ -20,9 +20,10 @@
             return $http.get('/api/v1/entries/');
         }
 
-        function create(content) {
+        function create(content, title) {
             return $http.post('/api/v1/entries/', {
-                content: content
+                content: content,
+                title: title
             });
         }
 

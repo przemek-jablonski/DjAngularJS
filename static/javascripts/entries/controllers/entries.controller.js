@@ -10,9 +10,7 @@
 
   function EntriesController($scope) {
     var vm = this;
-
     vm.columns = [];
-
     activate();
 
 
@@ -34,7 +32,7 @@
     * @memberOf thinkster.entrys.controllers.entrysControllers
     */
     function calculateNumberOfColumns() {
-      var width = $(window).width();
+      // var width = $(window).width();
       //
       // if (width >= 1200) {
       //     return 2;
@@ -110,6 +108,7 @@
           vm.columns[column].push(current[i]);
         }
       }
+
     }
   }
 })();

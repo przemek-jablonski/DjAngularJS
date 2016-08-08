@@ -16,15 +16,14 @@
         function submit() {
             $rootScope.$broadcast('entry.created', {
                 content: vm.content,
+                title: vm.title,
                 author: { username: Authentication.getAuthenticatedAccount().username}
             });
 
             $scope.closeThisDialog();
 
-            Entries.create(vm.content).then(newEntrySuccess, newEntryFailure);
-
             function newEntrySuccess(data, status, headers, config) {
-                Snackbar.show('Entry created!');
+                Snackbar.show('Entry succesfully created!');
             }
 
             function newEntryFailure(data, status, headers, config) {
