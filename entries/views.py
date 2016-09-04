@@ -7,6 +7,10 @@ from entries.models import Entry
 from entries.permissions import IsAuthorOfPost
 from entries.serializers import EntrySerializer
 
+import json
+from rest_framework import status, views
+
+
 # CRUD
 class EntryViewSet(viewsets.ModelViewSet):
     # todo: make custom ordering
@@ -35,5 +39,5 @@ class UserAccountEntriesViewSet(viewsets.ViewSet):
             return Response({
                 'status': 'no content',
                 'message': 'no content.'
-            }, status=status.HTTP_204_NO_CONTENT);
+            }, status=status.HTTP_204_NO_CONTENT)
         return Response(serializer.data)

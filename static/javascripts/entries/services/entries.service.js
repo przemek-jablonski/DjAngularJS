@@ -11,7 +11,8 @@
         var Entries = {
             all: all,
             create: create,
-            get: get
+            get: get,
+            getSingle: getSingle
         };
         return Entries;
 
@@ -29,6 +30,10 @@
 
         function get(username) {
             return $http.get('/api/v1/accounts/' + username + '/entries/');
+        }
+
+        function getSingle(entryId) {
+            return $http.get('/api/v1/detail/' + entryId + '/');
         }
 
     }

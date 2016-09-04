@@ -20,6 +20,7 @@ class EntrySerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at')
         read_only_fields = ('id', 'created_at', 'updated_at')
+        lookup_field = 'id'
 
     def get_validation_exclusions(self, *args, **kwargs):
         # possible null pointer here ( .get_validation...() )
