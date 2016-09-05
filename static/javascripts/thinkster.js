@@ -9,7 +9,8 @@
             'thinkster.layout',
             'thinkster.entries',
             'thinkster.utils',
-            'thinkster.profiles'
+            'thinkster.profiles',
+            'thinkster.yourentries'
         ]);
 
     angular

@@ -34,10 +34,10 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/profiles/settings.html'
         }).when('/+:username/entries', {
-            controller: 'IndexController',
+            controller: 'YourentriesIndexController',
             controllerAs: 'vm',
-            templateUrl: '/static/templates/layout/index.html'
-        }).otherwise('/');
+            templateUrl: '/static/templates/layout/yourentriesindex.html'
+        }).otherwise('/err');
 
         // http://127.0.0.1:8000/+ppp/entries
     }

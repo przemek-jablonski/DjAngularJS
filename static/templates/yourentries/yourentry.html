@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-11 col-lg-12__margin_m">
+    <div class="well">
+      <div class="yourentry">
+        <div class="entry__meta"> <a href="/+{{ yourentry.author.username }}">{{ yourentry.author.username }}</a> </div>
+        <div class="entry__title cuttext_title">{{ yourentry.title }}</div>
+          <hr/>
+        <div class="entry__content cuttext_content">{{ yourentry.content }}</div>
+          <hr/>
+        <div class="entry__bottomline">{{ yourentry.created_at }}</div>
+
+         {% if user.is_authenticated %}
+            <div class="float__right">
+                <button type="submit" class="btn btn-material-lightgreen btn__read__bottom">read this</button>
+            </div>
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
