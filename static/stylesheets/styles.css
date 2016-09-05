@@ -45,6 +45,49 @@
   text-decoration: none;
 }
 
+.yourentry {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.yourentry .entry__title{
+  text-align: center;
+  font-weight: 200;
+  font-size: 180%;
+  text-transform: uppercase;
+  font-style: italic;
+  color: #0f0f0f;
+  /*padding-bottom: 15px;*/
+}
+
+.yourentry .entry__content{
+  text-align: center;
+  font-weight: 200;
+  font-style: italic;
+  color: #333333;
+  padding-left: 10%;
+  padding-right: 10%;
+  /*padding-bottom: 15px;*/
+}
+
+.yourentry .entry__bottomline{
+  text-align: left;
+  font-weight: lighter;
+  font-style: italic;
+  padding-left: 5%;
+}
+
+.yourentry .entry__meta{
+  text-align: right;
+  font-weight: bold;
+  /*padding-bottom: 15px;*/
+  padding-right: 6%;
+}
+
+.yourentry .entry__meta a:hover {
+  text-decoration: none;
+}
+
 
 
 .btn-add-new-entry {

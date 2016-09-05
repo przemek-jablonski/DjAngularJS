@@ -7,14 +7,11 @@
           <hr/>
         <div class="entry__content cuttext_content">{{ yourentry.content }}</div>
           <hr/>
-        <div class="entry__bottomline">{{ yourentry.created_at }}</div>
-
-         {% if user.is_authenticated %}
-            <div class="float__right">
-                <button type="submit" class="btn btn-material-lightgreen btn__read__bottom">read this</button>
-            </div>
-          {% endif %}
-
+        <div class="entry__bottomline">Likes: {{ yourentry.likes }}</div>
+        <div class="entry__bottomline">Dislikes: {{ yourentry.likes }}</div>
+        <div class="entry__bottomline">Created: {{ yourentry.created_at }}</div>
+        <div class="entry__bottomline">Updated: {{ yourentry.created_at }}</div>
+          
       </div>
     </div>
   </div>
