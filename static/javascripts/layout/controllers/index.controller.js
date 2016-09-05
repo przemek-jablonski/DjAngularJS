@@ -5,18 +5,26 @@
         .module('thinkster.layout.controllers')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope', 'Authentication', 'Entries', 'Snackbar'];
+    IndexController.$inject = ['$scope', 'Authentication', 'Entries', 'Snackbar', '$routeParams'];
 
 
-    function IndexController($scope, Authentication, Entries, Snackbar) {
+    function IndexController($scope, Authentication, Entries, Snackbar, $routeParams) {
         var vm = this;
         vm.isAuthenticated = Authentication.isAuthenticated();
+
         vm.entries = [];
 
         activate();
 
         function activate() {
-            Entries.all().then(entrySuccess, entryFailure);
+            if ($routeParams.username != null) {
+                // var username = $routeParams.username.substr(1);
+                Entries.get($routeParams.username.substr(1)).then(entrySuccess, entryFailure);
+            } else {
+                Entries.all().then(entrySuccess, entryFailure);
+            }
+
+
 
             $scope.$on('entry.created', function(event, entry) {
                 vm.entries.unshift(entry);

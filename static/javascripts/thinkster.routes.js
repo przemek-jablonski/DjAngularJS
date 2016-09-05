@@ -33,7 +33,13 @@
             controller: 'ProfileSettingsController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/profiles/settings.html'
+        }).when('/+:username/entries', {
+            controller: 'IndexController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/index.html'
         }).otherwise('/');
+
+        // http://127.0.0.1:8000/+ppp/entries
     }
 
 })();
