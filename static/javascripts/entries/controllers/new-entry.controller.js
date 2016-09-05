@@ -22,7 +22,7 @@
 
             $scope.closeThisDialog();
 
-            Entries.create(vm.content).then(newEntrySuccess, newEntryFailure());
+            Entries.create(vm.content, vm.title).then(newEntrySuccess, newEntryFailure);
 
             function newEntrySuccess(data, status, headers, config) {
                 Snackbar.show('Entry succesfully created!');
