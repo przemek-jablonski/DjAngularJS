@@ -19,7 +19,7 @@
         }
 
         function error(content, options) {
-            _snackbar('Failure: ' + content, options);
+            _snackbar('ERROR: ' + content, options);
         }
 
         function show(content, options) {

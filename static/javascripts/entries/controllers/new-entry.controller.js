@@ -22,12 +22,14 @@
 
             $scope.closeThisDialog();
 
+            Entries.create(vm.content).then(newEntrySuccess, newEntryFailure());
+
             function newEntrySuccess(data, status, headers, config) {
                 Snackbar.show('Entry succesfully created!');
             }
 
             function newEntryFailure(data, status, headers, config) {
-                $rootScope.$broadcast('entry.created.error');
+                $rootScope.$broadcast('error' + 'entry.created.error');
                 Snackbar.error(data.error);
             }
         }

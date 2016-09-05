@@ -9,7 +9,7 @@ class Entry(models.Model):
     # BRO TIP: now UserAccount is aware of Post(s), so we can call
     # 'UserAccount.post_set' to get them.
     author = models.ForeignKey(UserAccount)
-    title = models.CharField(max_length=500, blank=True, default="Entry title.")
+    title = models.CharField(max_length=500)
     content = models.TextField()
     # content_short = models.TextField(default="asd")
 

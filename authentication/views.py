@@ -10,6 +10,9 @@ from rest_framework.response import Response
 from rest_framework import viewsets, permissions
 from rest_framework import status, views
 
+
+from django.http import Http404
+
 # from django.http import HttpResponse
 # import datetime
 
@@ -28,6 +31,9 @@ from rest_framework import status, views
 
 # creating viewset (set of views)
 # ModelViewSet gives us interface for CRUD operations on a given model
+from entries.models import Entry
+
+
 class AccountViewSet(viewsets.ModelViewSet):
 
     # 'username' (not ID) to be able to identify accounts by username instead
@@ -57,6 +63,18 @@ class AccountViewSet(viewsets.ModelViewSet):
             'status': '400 Bad API Request',
             'message': 'User data not completed or already exist in database.'},
             status=status.HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+
+            user_entries = Entry.objects.select_related('author').all()
+            instance = self.get_object()
+            self.perform_destroy(instance)
+
+        except Http404:
+            pass
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 # extending views.APIView (more generic class than ModelViewSet)
