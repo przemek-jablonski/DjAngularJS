@@ -7,24 +7,32 @@
           <hr/>
         <div class="entry__content cuttext_content">{{ yourentry.content }}</div>
           <hr/>
-        <div class="entry__bottomline">Likes: {{ yourentry.likes }}</div>
-        <div class="entry__bottomline">Dislikes: {{ yourentry.likes }}</div>
-        <div class="entry__bottomline">Created: {{ yourentry.created_at }}</div>
+          <div class="entry__bottomline">Created: {{ yourentry.created_at }}</div>
         <div class="entry__bottomline">Updated: {{ yourentry.created_at }}</div>
+        <div class="entry__bottomline">Likes: {{ yourentry.likes }}</div>
+          <div class="entry__bottomline">Visits: {{ yourentry.visits }}</div>
+        <div class="entry__bottomline">Saves: {{ yourentry.saves }}</div>
 
-          <div ng-app ng-controller="YourentriesController">
-              <button ng-click="clickedLike()" ng-init="likeText='LIKE'"> {{ likeText }}! </button>
-          </div>
+          <div class="entry__bottomline">ID: {{ yourentry.id }}</div>
 
-          <div ng-controller="YourentriesController" ng-init="id='value';">
-                <label>id: {{yourentry.id}}</label>
-                <button ng-click="deleteEntry()"> DELETE! </button>
+        <hr/>
+
+          <div class="float__right">
+            <div ng-controller="YourentriesController" ng-init="id='value';">
+                <button class="btn btn-material-red btn__read__bottom" ng-click="deleteEntry()"> DELETE </button>
             </div>
           </div>
 
+          <div class="float__right">
+              <div ng-controller="YourentriesController">
+                <button class="btn btn-material-lightgreen btn__read__bottom" ng-click="likeEntry()"> like </button>
+            </div>
+          </div>
 
-          <div >
-
+          <div class="float__right">
+              <div ng-controller="YourentriesController">
+                <button class="btn btn-material-lightyellow btn__read__bottom" ng-click="readEntry()"> read </button>
+            </div>
           </div>
 
       </div>

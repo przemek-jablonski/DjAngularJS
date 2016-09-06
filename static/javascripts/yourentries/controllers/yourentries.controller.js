@@ -5,10 +5,10 @@
     .module('thinkster.yourentries.controllers')
     .controller('YourentriesController', YourentriesController);
 
-  YourentriesController.$inject = ['$scope', 'Yourentries', 'Snackbar'];
+  YourentriesController.$inject = ['$scope', 'Yourentries', 'Snackbar', 'Authentication'];
 
 
-  function YourentriesController($scope, Yourentries, Snackbar) {
+  function YourentriesController($scope, Yourentries, Snackbar, Authentication) {
     var vm = this;
     vm.yourcolumns = [];
     var hasLiked = false;
@@ -30,7 +30,28 @@
       var id = $scope.$parent.yourentry.id;
       Yourentries.destroy(id);
       Snackbar.error("DESTROYED" + $scope.id);
-    }
+    };
+
+    $scope.likeEntry = function() {
+      var entry = $scope.$parent.yourentry;
+      var acc = Authentication.getAuthenticatedAccount()
+      if (!Authentication.isAuthenticated()) {
+        Snackbar.error("log in to like");
+      } else if (acc.id == entry.author.id) {
+        Snackbar.error("can't like your own entry");
+      } else {
+        entry.likes += 1;
+        Yourentries.update(entry, entry.id);
+        Snackbar.show("UPDATED LIKES: " + entry.id);
+      }
+    };
+
+    $scope.readEntry = function() {
+      var entry = $scope.$parent.yourentry;
+      entry.visits += 1;
+      Yourentries.update(entry, entry.id);
+      Snackbar.show("UPDATE VISITS: " + entry.id);
+    };
 
     /**
     * @name calculateNumberOfColumns

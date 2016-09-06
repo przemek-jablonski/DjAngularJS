@@ -11,7 +11,8 @@
         var Entries = {
             all: all,
             create: create,
-            get: get
+            get: get,
+            update: update
         };
         return Entries;
 
@@ -29,6 +30,10 @@
 
         function get(username) {
             return $http.get('/api/v1/accounts/' + username + '/entries/');
+        }
+
+        function update(post, id) {
+            return $http.put('/api/v1/entries/' + id + "/", post);
         }
 
     }

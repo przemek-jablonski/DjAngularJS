@@ -18,6 +18,8 @@ class EntryViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
            return (permissions.AllowAny(),)
         return (permissions.IsAuthenticated(), IsAuthorOfPost())
+        #    return (permissions.IsAuthenticated())
+
 
     def perform_create(self, serializer):
         instance = serializer.save(author = self.request.user)

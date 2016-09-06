@@ -25,7 +25,6 @@
             }
 
 
-
             $scope.$on('entry.created', function(event, entry) {
                 vm.entries.unshift(entry);
             });
@@ -43,6 +42,25 @@
                 Snackbar.error(data.error);
             }
         }
+
+        function sortEntries(sortingType, sortingOrder) {
+
+        }
+
+        // function compareEntries(a, b) {
+        //     if (a.)
+        // }
+
+        var SortingType = {
+            CREATE_DATE : 0,
+            UPDATE_DATE : 1,
+            LIKES_COUNT : 2
+        };
+
+        var SortingOrder = {
+            DESCENDING: 0,
+            ASCENDING: 1
+        };
     }
 
 })();

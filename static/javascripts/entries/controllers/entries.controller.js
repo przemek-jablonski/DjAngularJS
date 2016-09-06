@@ -5,10 +5,10 @@
     .module('thinkster.entries.controllers')
     .controller('EntriesController', EntriesController);
 
-  EntriesController.$inject = ['$scope'];
+  EntriesController.$inject = ['$scope', 'Authentication', 'Entries', 'Snackbar'];
 
 
-  function EntriesController($scope) {
+  function EntriesController($scope, Authentication, Entries, Snackbar) {
     var vm = this;
     vm.columns = [];
     activate();
@@ -23,6 +23,28 @@
       $scope.$watchCollection(function () { return $scope.entries; }, render);
       $scope.$watch(function () { return $(window).width(); }, render);
     }
+
+    $scope.likeEntry = function() {
+      var entry = $scope.$parent.entry;
+      var acc = Authentication.getAuthenticatedAccount()
+      if (!Authentication.isAuthenticated()) {
+        Snackbar.error("log in to like");
+      } else if (acc.id == entry.author.id) {
+        Snackbar.error("can't like your own entry");
+      } else {
+        entry.likes += 1;
+        Entries.update(entry, entry.id);
+        Snackbar.show("UPDATED LIKES: " + entry.title);
+      }
+    };
+
+
+    $scope.readEntry = function() {
+      var entry = $scope.$parent.entry;
+      entry.visits += 1;
+      Entries.update(entry, entry.id);
+      Snackbar.show("UPDATE VISITS: (" + entry.title + ")");
+    };
 
 
     /**

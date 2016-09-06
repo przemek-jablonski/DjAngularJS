@@ -13,12 +13,17 @@
           <div class="entry__bottomline">Likes: {{ entry.likes }}</div>
         <div class="entry__bottomline">Created: {{ entry.created_at }}</div>
 
+
           <div class="float__right">
-            <button type="submit" class="btn btn-material-lightgreen btn__read__bottom">read this</button>
+              <div ng-controller="EntriesController">
+                <button class="btn btn-material-lightgreen btn__read__bottom" ng-click="likeEntry()"> like </button>
+            </div>
           </div>
 
           <div class="float__right">
-            <button type="submit" class="btn btn-material-lightgreen btn__read__bottom">like!</button>
+              <div ng-controller="EntriesController">
+                <button class="btn btn-material-lightyellow btn__read__bottom" ng-click="readEntry()"> read </button>
+            </div>
           </div>
 
 

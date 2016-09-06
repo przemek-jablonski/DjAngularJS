@@ -11,7 +11,8 @@
         var Yourentries = {
             create: create,
             get: get,
-            destroy: destroy
+            destroy: destroy,
+            update: update
         };
         return Yourentries;
 
@@ -29,6 +30,10 @@
 
         function destroy(id) {
             return $http.delete('/api/v1/entries/' + id + "/");
+        }
+
+        function update(post, id) {
+            return $http.put('/api/v1/entries/' + id + "/", post);
         }
 
     }
