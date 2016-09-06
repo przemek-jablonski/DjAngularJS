@@ -1,3 +1,8 @@
+<div ng-controller="IndexController">
+    <button class="btn btn-material-orange" ng-click="sortEntriesDate()">sort by date</button>
+    <button class="btn btn-material-purple" ng-click="sortEntriesLikes()">sort by likes</button>
+</div>
+
 <entries entries="vm.entries" ng-show="vm.entries && vm.entries.length"></entries>
 
 <a class="btn btn-primary btn-fab-material-lightgreen btn-raised mdi-content-add btn-add-new-entry btn-fab-material-lightgreen"

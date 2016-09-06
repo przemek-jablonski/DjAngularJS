@@ -12,13 +12,13 @@
         var vm = this;
         vm.isAuthenticated = Authentication.isAuthenticated();
 
+        vm.entriesOriginal = [];
         vm.entries = [];
 
         activate();
 
         function activate() {
             if ($routeParams.username != null) {
-                // var username = $routeParams.username.substr(1);
                 Entries.get($routeParams.username.substr(1)).then(entrySuccess, entryFailure);
             } else {
                 Entries.all().then(entrySuccess, entryFailure);
@@ -35,6 +35,7 @@
 
             function entrySuccess(data, status, headers, config) {
                 vm.entries = data.data;
+                vm.entriesOriginal = vm.entries;
                 Snackbar.show("success / data count: " + data.length + " / " + vm.entries.length);
             }
 
@@ -43,13 +44,21 @@
             }
         }
 
-        function sortEntries(sortingType, sortingOrder) {
+        $scope.sortEntriesLikes = function() {
+            vm.entries.sort(compareLikes);
+        };
 
+        $scope.sortEntriesDate = function () {
+            vm.entries = vm.entriesOriginal;
+        };
+
+        function compareLikes(a,b) {
+          if (a.likes < b.likes)
+            return -1;
+          if (a.likes > b.likes)
+            return 1;
+          return 0;
         }
-
-        // function compareEntries(a, b) {
-        //     if (a.)
-        // }
 
         var SortingType = {
             CREATE_DATE : 0,

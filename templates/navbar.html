@@ -13,14 +13,18 @@
     <div class="collapse navbar-collapse" id="not-google-plus-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
+
           <li><a href="/+{{ user.username }}"><b>{{ user.username }}</b></a></li>
           <li><a href="/+{{ user.username }}/entries">Your entries</a></li>
           <li><a href="/+{{ user.username }}">Your profile</a></li>
           <li><a href="/+{{ user.username }}/settings">Edit profile</a></li>
           <li><a href="javascript:void(0)" ng-click="vm.logout()">Sign out</a></li>
+
         {% else %}
+
           <li><a href="/login">Sign in</a></li>
           <li><a href="/register">Sign up</a></li>
+
         {% endif %}
       </ul>
     </div> <!-- /.collapse.navbar-collapse -->

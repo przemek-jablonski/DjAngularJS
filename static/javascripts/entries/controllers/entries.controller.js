@@ -26,7 +26,8 @@
 
     $scope.likeEntry = function() {
       var entry = $scope.$parent.entry;
-      var acc = Authentication.getAuthenticatedAccount()
+      var acc = Authentication.getAuthenticatedAccount();
+
       if (!Authentication.isAuthenticated()) {
         Snackbar.error("log in to like");
       } else if (acc.id == entry.author.id) {
@@ -41,9 +42,15 @@
 
     $scope.readEntry = function() {
       var entry = $scope.$parent.entry;
-      entry.visits += 1;
-      Entries.update(entry, entry.id);
-      Snackbar.show("UPDATE VISITS: (" + entry.title + ")");
+      var acc = Authentication.getAuthenticatedAccount();
+
+      if (!Authentication.isAuthenticated()) {
+        Snackbar.error("log in to mark as read");
+      } else {
+        entry.visits += 1;
+        Entries.update(entry, entry.id);
+        Snackbar.show("UPDATE VISITS: (" + entry.title + ")");
+      }
     };
 
 
