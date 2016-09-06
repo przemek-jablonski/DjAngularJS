@@ -11,7 +11,15 @@
         <div class="entry__bottomline">Dislikes: {{ yourentry.likes }}</div>
         <div class="entry__bottomline">Created: {{ yourentry.created_at }}</div>
         <div class="entry__bottomline">Updated: {{ yourentry.created_at }}</div>
-          
+
+          <div ng-controller="YourentriesController">
+              <button ng-click="clickedLike()"> CLICK ME </button>
+          </div>
+
+{#          <div ng-app="thinkster.yourentries.controllers" ng-controller="YourentriesController" class="float__right">#}
+{#            <button ng-click="clickedLike()" type="submit" class="btn btn-material-lightgreen btn__read__bottom">+1'd</button>#}
+{#          </div>#}
+
       </div>
     </div>
   </div>

@@ -5,10 +5,10 @@
     .module('thinkster.yourentries.controllers')
     .controller('YourentriesController', YourentriesController);
 
-  YourentriesController.$inject = ['$scope'];
+  YourentriesController.$inject = ['$scope', 'Snackbar'];
 
 
-  function YourentriesController($scope) {
+  function YourentriesController($scope, Snackbar) {
     var vm = this;
     vm.yourcolumns = [];
     activate();
@@ -25,6 +25,11 @@
     }
 
 
+    $scope.clickedLike = function() {
+      Snackbar.show('LIKED!');
+      activate();
+    }
+
     /**
     * @name calculateNumberOfColumns
     * @desc Calculate number of columns based on screen width
@@ -34,13 +39,13 @@
     function calculateNumberOfColumns() {
       var width = $(window).width();
 
-      // if (width >= 1200) {
-      //   return 4;
-      // } else if (width >= 992){
-      //   return 3;
-      // } else if (width >= 768){
-      //   return 2;
-      // }
+      if (width >= 1200) {
+        return 4;
+      } else if (width >= 992){
+        return 3;
+      } else if (width >= 768){
+        return 2;
+      }
       return 1;
 
       // if (width >= 1200) {
