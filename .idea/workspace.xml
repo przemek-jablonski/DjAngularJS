@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d7db067-b96d-429a-8867-2266ddad7290" name="Default" comment="styling for writer entries">
+    <list default="true" id="9d7db067-b96d-429a-8867-2266ddad7290" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/javascripts/entries/controllers/entries.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/entries/controllers/entries.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/layout/index.html" afterPath="$PROJECT_DIR$/static/templates/layout/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/navbar.html" afterPath="$PROJECT_DIR$/templates/navbar.html" />
     </list>
     <ignored path="thinkster-django-angular-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -743,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473193322203</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="finished iteration 1">
+      <created>1473199633397</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1473199633397</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -796,7 +799,8 @@
     <MESSAGE value="Fixed creating entries (title bug) + frontend columns" />
     <MESSAGE value="styling for writer entries" />
     <MESSAGE value="updating entries, like validation, styling, yourentries options" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating entries, like validation, styling, yourentries options" />
+    <MESSAGE value="finished iteration 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished iteration 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
