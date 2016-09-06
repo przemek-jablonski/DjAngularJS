@@ -5,12 +5,13 @@
     .module('thinkster.yourentries.controllers')
     .controller('YourentriesController', YourentriesController);
 
-  YourentriesController.$inject = ['$scope', 'Snackbar'];
+  YourentriesController.$inject = ['$scope', 'Yourentries', 'Snackbar'];
 
 
-  function YourentriesController($scope, Snackbar) {
+  function YourentriesController($scope, Yourentries, Snackbar) {
     var vm = this;
     vm.yourcolumns = [];
+    var hasLiked = false;
     activate();
 
 
@@ -25,9 +26,10 @@
     }
 
 
-    $scope.clickedLike = function() {
-      Snackbar.show('LIKED!');
-      activate();
+    $scope.deleteEntry = function() {
+      var id = $scope.$parent.yourentry.id;
+      Yourentries.destroy(id);
+      Snackbar.error("DESTROYED" + $scope.id);
     }
 
     /**

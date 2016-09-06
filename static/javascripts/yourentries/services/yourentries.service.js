@@ -10,7 +10,8 @@
     function Yourentries($http) {
         var Yourentries = {
             create: create,
-            get: get
+            get: get,
+            destroy: destroy
         };
         return Yourentries;
 
@@ -24,6 +25,10 @@
 
         function get(username) {
             return $http.get('/api/v1/accounts/' + username + '/entries/');
+        }
+
+        function destroy(id) {
+            return $http.delete('/api/v1/entries/' + id + "/");
         }
 
     }
